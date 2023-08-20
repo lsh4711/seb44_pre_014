@@ -1,7 +1,7 @@
-import React from 'react';
-import styled from 'styled-components';
 import Button from 'components/Button/Button';
+import React from 'react';
 import { useNavigate } from 'react-router-dom';
+import styled from 'styled-components';
 import { TQuestion } from 'utils/type';
 
 import moment from 'moment';

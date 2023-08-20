@@ -87,4 +87,5 @@ const AnswerMain = styled.div`
   flex-direction: column;
   justify-content: space-between;
   width: 100%;
+  border-bottom: 1px solid hsl(210, 8%, 85%);
 `;
