@@ -1,12 +1,12 @@
-import styled from 'styled-components';
-import VoteContainer from 'feature/QuestionDetail/VoteContainer';
-import DetailTitle from 'feature/QuestionDetail/DetailTitle';
-import DetailMainText from 'feature/QuestionDetail/DetailMainText';
-import DetailAnswerInput from 'feature/QuestionDetail/DetailAnswerInput';
 import DetailAnswer from 'feature/QuestionDetail/DetailAnswer';
+import DetailAnswerInput from 'feature/QuestionDetail/DetailAnswerInput';
+import DetailMainText from 'feature/QuestionDetail/DetailMainText';
+import DetailTitle from 'feature/QuestionDetail/DetailTitle';
 import LabelContainer from 'feature/QuestionDetail/LabellContainer';
-import { useParams, useNavigate } from 'react-router-dom';
+import VoteContainer from 'feature/QuestionDetail/VoteContainer';
 import { useEffect, useState } from 'react';
+import { useNavigate, useParams } from 'react-router-dom';
+import styled from 'styled-components';
 // import axios from 'axios';
 import API from 'services/api/index';
 
@@ -46,7 +46,7 @@ export default function DetailQuestion() {
 
       setQuData(res.data);
       setIsLoading(false);
-      console.log(quData);
+      // console.log(res.data);
     } catch (err) {
       console.log(err);
     }
@@ -95,7 +95,9 @@ export default function DetailQuestion() {
             <DetailMainText quData={quData} />
             <LabelContainer
               type="question"
-              quData={quData}
+              memberId={quData.memberId}
+              writer={quData.writer}
+              createdAt={quData.createdAt}
               deleteQu={deleteQuestion}
               id={quData.questionId}
               updateQu={updateQuestion}
@@ -114,7 +116,6 @@ export default function DetailQuestion() {
         />
         <DetailAnswerInput
           quData={quData}
-          id={quData.memberId}
           questionId={quData.questionId}
           timeStamp={timeStamp}
           setTimeStamp={setTimeStamp}

@@ -1,9 +1,8 @@
-import React from 'react';
-import styled from 'styled-components';
-import API from '../../services/api/index';
-import { useState, useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { useStoreFile } from 'store/count/store.file';
+import styled from 'styled-components';
+import API from '../../services/api/index';
 const UploadFile = ({ edit }) => {
   const { newFile, setnewFile } = useStoreFile();
   const id = useParams();
@@ -13,7 +12,7 @@ const UploadFile = ({ edit }) => {
   const readURL = (event) => {
     if (event.target.files[0]) {
       setFile(event.target.files[0]);
-      console.log(event.target.files[0]);
+      // console.log(event.target.files[0]);
       const res = URL.createObjectURL(event.target.files[0]);
       setFileurl(res);
     }
@@ -57,7 +56,7 @@ const UploadFile = ({ edit }) => {
     try {
       const res = await API.GET(`/api/questions/${id.id}/files?size=1`);
       setFileurl(`data:image/jpeg;base64,` + res.data[0]);
-      console.log(res);
+      // console.log(res);
     } catch (err) {
       console.log(err);
     }
@@ -66,7 +65,7 @@ const UploadFile = ({ edit }) => {
     if (edit === 'patch') {
       getDataurl();
     }
-    console.log(id);
+    // console.log(id);
   }, []);
 
   return (
