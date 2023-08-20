@@ -5,8 +5,7 @@ import { FaInbox, FaStackExchange } from 'react-icons/fa';
 import { useNavigate } from 'react-router-dom';
 import { useUserStore } from 'store/user/store.user';
 import styled from 'styled-components';
-import logo from '../../assets/mainlogo.png';
-import sublogo from '../../assets/sublogo.png';
+import { default as logo, default as sublogo } from '../../assets/plip.jpg';
 
 const Header: React.FC = () => {
   const { memberId, setMemberId } = useUserStore();
@@ -49,7 +48,7 @@ const Header: React.FC = () => {
       <HeaderContainer>
         <LogoWrapper onClick={moveToMain}>
           <img src={logo} className="header-logo" />
-          <img src={sublogo} className="header-sublogo"></img>
+          <img src={sublogo} className="header-sublogo" />
         </LogoWrapper>
         <ProductWrapper>Products</ProductWrapper>
         <SerachWrapper>
@@ -128,22 +127,26 @@ const HeaderContainer = styled.div`
 const LogoWrapper = styled.div`
   padding: 0;
   margin: 0;
-  width: auto;
+  width: 175px;
   height: 100%;
-  padding-top: 7px;
+  // padding-top: 7px;
+  padding-bottom: 60px;
   :hover {
     background-color: rgba(0, 0, 0, 0.1);
   }
   .header-logo {
-    width: 150px;
-    height: 30px;
+    margin-left: 20px;
+    width: 60px;
+    height: 60px;
     @media (max-width: 900px) {
       display: none;
     }
   }
   .header-sublogo {
-    width: 40px;
-    height: 40px;
+    margin-left: 60px;
+    padding-top: 5px;
+    width: 50px;
+    height: 50px;
     display: none;
     @media (max-width: 900px) {
       display: flex;
