@@ -1,9 +1,7 @@
 import React, { useEffect, useState } from 'react';
-import styled from 'styled-components';
 import { FaGlobeAmericas } from 'react-icons/fa';
-import { AiFillInfoCircle } from 'react-icons/ai';
-import { svgbag, svgstar } from './SidebarSvg';
 import { useLocation } from 'react-router-dom';
+import styled from 'styled-components';
 
 const Sidebar: React.FC = () => {
   const [isVisible, setIsVisible] = useState(false);
@@ -32,7 +30,7 @@ const Sidebar: React.FC = () => {
             <li className="list-li"> Companies</li>
           </ul>
         </PublicContainer>
-        <CollectiveContainer className="category">
+        {/* <CollectiveContainer className="category">
           Collective
           <AiFillInfoCircle />
           <div className="menu">
@@ -64,7 +62,7 @@ const Sidebar: React.FC = () => {
             </svg>
             <TextWrapper>Create free Team</TextWrapper>
           </div>
-        </TeamsContainer>
+        </TeamsContainer> */}
       </ListContainer>
     </StyledWrapper>
   ) : null;
