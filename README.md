@@ -1,6 +1,6 @@
 # 🛵 개발의 민족 🛵
 
-### stackoverflow 클론코딩 Pre-Project
+### 게시판 Pre-Project
 🔖 [배포 URL](https://codestates.shop/) 2023.06.09 - 2023.06.27
 
 
