@@ -18,6 +18,7 @@ const StyledDetailPage = styled.div`
 const DetailMain = styled.div`
   width: 100%;
   display: flex;
+  border-bottom: 1px solid hsl(210, 8%, 85%);
 `;
 
 const MainContainer = styled.div`

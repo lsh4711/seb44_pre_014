@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
+import API from 'services/api/index';
 import styled from 'styled-components';
 import { TQuestion } from 'utils/type';
-import API from 'services/api/index';
 
 type Tprops = {
   quData: TQuestion;
