@@ -10,7 +10,7 @@ import sublogo from '../../assets/sublogo.png';
 
 const Header: React.FC = () => {
   const { memberId, setMemberId } = useUserStore();
-  console.log(memberId);
+  // console.log(memberId);
 
   //나중에 로컬스토리지에서 받아오는 것으로 수정.
   const navigate = useNavigate();

@@ -3,11 +3,12 @@ import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useUserStore } from 'store/user/store.user';
 import styled from 'styled-components';
-import { TQuestion } from 'utils/type';
 import UserInfo from './UserInfo';
 
 type Tprops = {
-  quData: TQuestion;
+  memberId: string;
+  writer: string;
+  createdAt: string;
   deleteQu?: (id: number, type: string) => void;
   id: number;
   updateQu: (id: number, type: string) => void;
@@ -16,7 +17,9 @@ type Tprops = {
 };
 
 const LabelContainer: React.FC<Tprops> = ({
-  quData,
+  memberId,
+  writer,
+  createdAt,
   deleteQu,
   id,
   updateQu,
@@ -24,7 +27,7 @@ const LabelContainer: React.FC<Tprops> = ({
 }) => {
   const navigate = useNavigate();
   const onClickButton = () => navigate('/button');
-  const { memberId } = useUserStore();
+  const loginId = useUserStore().memberId;
   const handleEdit = () => {
     updateQu(id, type);
   };
@@ -33,27 +36,26 @@ const LabelContainer: React.FC<Tprops> = ({
   };
 
   const serverUrl = process.env.REACT_APP_SERVER_URL;
-
   return (
-    quData && (
-      <Label>
-        <ButtonContainer>
-          <DetailButton onClick={onClickButton}>Share</DetailButton>
-          {Number(memberId) === quData.memberId && (
-            <>
-              <DetailButton onClick={handleEdit}>Edit</DetailButton>
-              <DetailButton onClick={handleDelete}>Delete</DetailButton>
-            </>
-          )}
-        </ButtonContainer>
-        <UserInfo
-          img={`${serverUrl}/members/${quData.memberId}/files`}
-          site={`/profile/${quData.memberId}`}
-          name={quData.writer}
-          createdAt={quData.createdAt}
-        />
-      </Label>
-    )
+    // quData && (
+    <Label>
+      <ButtonContainer>
+        <DetailButton onClick={onClickButton}>Share</DetailButton>
+        {loginId == memberId && (
+          <>
+            <DetailButton onClick={handleEdit}>Edit</DetailButton>
+            <DetailButton onClick={handleDelete}>Delete</DetailButton>
+          </>
+        )}
+      </ButtonContainer>
+      <UserInfo
+        img={`${serverUrl}/members/${memberId}/files`}
+        site={`/profile/${memberId}`}
+        memberId={memberId}
+        name={writer}
+        createdAt={createdAt}
+      />
+    </Label>
   );
 };
 

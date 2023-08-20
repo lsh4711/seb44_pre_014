@@ -1,5 +1,5 @@
-import styled from 'styled-components';
 import { useEffect, useState } from 'react';
+import styled from 'styled-components';
 
 const TagBar = ({ writeTag, setwriteTag, title, help }) => {
   const [newTag, setNewTag] = useState('');
@@ -35,7 +35,7 @@ const TagBar = ({ writeTag, setwriteTag, title, help }) => {
   };
 
   useEffect(() => {
-    console.log(writeTag);
+    // console.log(writeTag);
   }, [writeTag]);
 
   return (

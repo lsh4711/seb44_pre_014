@@ -67,7 +67,7 @@ const Myinfo_top = ({ userData }) => {
           } days`}</div>
         </UserContents>
         <UserEmail className="display-intro">
-          {userData ? userData.email : null}
+          {userData ? '✉️ ' + userData.email : null}
         </UserEmail>
       </ItemContainer>
       {Number(memberId) === Number(id) && (
@@ -157,7 +157,7 @@ const ProfileBtnContainer = styled.div`
 `;
 
 const UserEmail = styled.div`
-  font-size: 13px;
+  font-size: 12px;
   color: var(--black-500);
 
   @media (max-width: 612px) {

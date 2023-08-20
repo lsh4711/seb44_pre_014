@@ -1,9 +1,9 @@
 import React from 'react';
 import styled from 'styled-components';
-import VoteContainer from './VoteContainer';
-import LabelContainer from './LabellContainer';
 import { TQuestion } from 'utils/type';
 import EditAnswer from './EditAnswer';
+import LabelContainer from './LabellContainer';
+import VoteContainer from './VoteContainer';
 
 type Tprops = {
   quData: TQuestion;
@@ -29,39 +29,43 @@ const DetailAnswer: React.FC<Tprops> = ({
   return (
     <>
       <h3>{quData.answers.length} Answer</h3>
-      {quData.answers.map(({ answerId, content }) => (
-        <AnswerContainer>
-          <VoteContainer />
-          <AnswerMain>
-            {isEdit && selectedAnswerId === answerId && (
-              <EditAnswer
-                setIsEdit={setIsEdit}
-                content={content}
+      {quData.answers.map(
+        ({ memberId, writer, answerId, content, createdAt }) => (
+          <AnswerContainer key={answerId}>
+            <VoteContainer />
+            <AnswerMain>
+              {isEdit && selectedAnswerId === answerId && (
+                <EditAnswer
+                  setIsEdit={setIsEdit}
+                  content={content}
+                  id={answerId}
+                  setTimeStamp={setTimeStamp}
+                  timeStamp={timeStamp}
+                />
+              )}
+              {isEdit && selectedAnswerId !== answerId && (
+                <AnswerText>
+                  <p>{content}</p>
+                </AnswerText>
+              )}
+              {!isEdit && (
+                <AnswerText>
+                  <p>{content}</p>
+                </AnswerText>
+              )}
+              <LabelContainer
+                memberId={memberId}
+                writer={writer}
+                createdAt={createdAt}
+                deleteQu={deleteQu}
                 id={answerId}
-                setTimeStamp={setTimeStamp}
-                timeStamp={timeStamp}
+                type="answer"
+                updateQu={updateQu}
               />
-            )}
-            {isEdit && selectedAnswerId !== answerId && (
-              <AnswerText>
-                <p key={answerId}>{content}</p>
-              </AnswerText>
-            )}
-            {!isEdit && (
-              <AnswerText>
-                <p key={answerId}>{content}</p>
-              </AnswerText>
-            )}
-            <LabelContainer
-              quData={quData}
-              deleteQu={deleteQu}
-              id={answerId}
-              type="answer"
-              updateQu={updateQu}
-            />
-          </AnswerMain>
-        </AnswerContainer>
-      ))}
+            </AnswerMain>
+          </AnswerContainer>
+        )
+      )}
     </>
   );
 };

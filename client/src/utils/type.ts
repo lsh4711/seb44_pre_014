@@ -5,6 +5,8 @@ export type TQuestion = {
   voteQuantity: number;
   tagNames: string[];
   answers: {
+    memberId: string;
+    writer: string;
     answerId: number;
     content: string;
     createdAt: string;

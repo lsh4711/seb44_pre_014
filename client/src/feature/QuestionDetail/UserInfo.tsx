@@ -3,6 +3,7 @@ import React from 'react';
 import styled from 'styled-components';
 
 type UserProps = {
+  memberId: string;
   name: string;
   img: string;
   site: string;
@@ -10,8 +11,11 @@ type UserProps = {
 };
 
 const UserInfo: React.FC<UserProps> = (props) => {
-  const handleImgError = (event: React.SyntheticEvent<HTMLImageElement>) => {
-    event.currentTarget.style.display = 'none';
+  // const handleImgError = (event: React.SyntheticEvent<HTMLImageElement>) => {
+  //   event.currentTarget.style.display = 'none';
+  // };
+  const handleImgError = (e) => {
+    e.target.src = 'https://i.ibb.co/gwgngJy/cutecat.jpg';
   };
   return (
     <UserInfoContainer>
@@ -20,7 +24,7 @@ const UserInfo: React.FC<UserProps> = (props) => {
         <img src={props.img} onError={handleImgError} />
         <UserFollow>
           <a href={props.site}>{props.name}</a>
-          <span>23</span>
+          <span>{props.memberId}</span>
         </UserFollow>
       </UserDetail>
     </UserInfoContainer>

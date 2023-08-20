@@ -1,14 +1,13 @@
-import React, { useEffect, useRef } from 'react';
-import API from 'services/api/index';
-import styled from 'styled-components';
-import { API_ANSWER } from 'services/api/key';
-import { TQuestion } from 'utils/type';
 import Button from 'components/Button/Button';
-import { useUserStore } from 'store/user/store.user';
+import React, { useEffect, useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
+import API from 'services/api/index';
+import { API_ANSWER } from 'services/api/key';
+import { useUserStore } from 'store/user/store.user';
+import styled from 'styled-components';
+import { TQuestion } from 'utils/type';
 
 type Tprops = {
-  id: number;
   questionId: number;
   quData: TQuestion;
   timeStamp: number;
@@ -16,7 +15,6 @@ type Tprops = {
 };
 
 const DetailAnswerInput: React.FC<Tprops> = ({
-  id,
   questionId,
   quData,
   setTimeStamp,
@@ -34,12 +32,16 @@ const DetailAnswerInput: React.FC<Tprops> = ({
   const todoSubmitHandler = async (event: React.FormEvent) => {
     event.preventDefault();
     const enteredText = textInputRef.current?.value;
-    console.log(enteredText);
+    // console.log(enteredText);
     if (memberId) {
       try {
         const res = await API.POST({
           url: API_ANSWER,
-          data: { content: enteredText, memberId: id, questionId: questionId },
+          data: {
+            content: enteredText,
+            memberId: memberId,
+            questionId: questionId,
+          },
         });
         if (res.status !== 201) throw res;
 
