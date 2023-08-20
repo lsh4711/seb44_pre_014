@@ -127,24 +127,19 @@ const HeaderContainer = styled.div`
 const LogoWrapper = styled.div`
   padding: 0;
   margin: 0;
-  width: 175px;
+  width: 50px;
   height: 100%;
-  // padding-top: 7px;
-  padding-bottom: 60px;
   :hover {
     background-color: rgba(0, 0, 0, 0.1);
   }
   .header-logo {
-    margin-left: 20px;
-    width: 60px;
-    height: 60px;
+    width: 50px;
+    height: 50px;
     @media (max-width: 900px) {
       display: none;
     }
   }
   .header-sublogo {
-    margin-left: 60px;
-    padding-top: 5px;
     width: 50px;
     height: 50px;
     display: none;
